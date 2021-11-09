@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--
+			CIS Unit 4, Graded Exercise 1
+			Author: Andrew O'Brien
+			Date:   17 August 2020
+		-->
+		<meta charset="utf-8" />
+		<meta id="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+		<title> Unit 4, Graded Exercise 1</title>
+	</head>
+	<body>
+		<header>
+			<h1>Andrew O'Brien, Graded Exercise 1</h1>
+		</header>
+		<article>
+			<script>
+				"use strict"
+				window.addEventListener("onload", action())
+				var x = document.cookie;
+				var d = new Date();
+				var weekday = new Array ("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+				var time = new Date();
+			
+				var lastvisit = (weekday[d.getDay()] + " ")
+						+ (d.getMonth() + "/")
+						+ (d.getDate() + "/")
+						+ (d.getFullYear())
+						+ (" at ")
+						+ (time.getHours())
+						+ (":")
+						+ (time.getMinutes() + 1)
+						+ (":")
+						+ (time.getSeconds());
+				document.cookie = lastvisit;
+				
+				function action()
+					{
+					var x = document.cookie;
+					if (x == "")
+						{
+						document.write("Andrew O'Brien, this is your first visit.");
+						}
+					else
+						{
+						document.write("Your last visit was " + x);
+						}
+					}
+			</script>
+		</article>
+	</body>
+</html>
