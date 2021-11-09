@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--
+			CIS213 Unit 5, Graded Exercise 2
+			Author: Andrew O'Brien
+			Date:   24 Aug 2020
+		-->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<title>Unit 5, Graded Exercise 2</title>
+		<style> label {display: inline-block; width: 120px; text-align: left;} td {display: inline-block; width: 120px; text-align: left;}</style>
+	</head>
+	<body>
+		<header>
+			<h1>Andrew O'Brien, Restaurant Calculator</h1>
+		</header>
+		<article>
+			<form novalidate="novalidate">
+				<label for="billinput">Bill Amount:</label>
+				<input type="text" id="billinput"name="bill" required="required" />
+				<br><label for="tipinput">Tip %:</label>
+				<input type="text" id="tipinput"name="tip" required="required" /> 
+				(enter as a whole number)
+				<br><label for="peopleinput"># of People:</label>
+				<input type="text" id="peopleinput"name="people" required="required" />
+			</form>
+			<table>
+				<colgroup>
+					<col class="label" />
+					<col class="amount" />
+				</colgroup>
+				<tbody>
+					<tr>
+						<td>Tip amount:</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Total Bill:</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Total per Person:</td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+			<input type="button" id="calcBtn" value="Calculate" onclick="calcTotal()"/>					
+		</article>
+		<script>
+			function calcTotal()
+				{
+				var billAmount = (document.getElementById("billinput").value * 1);
+				var tip = (document.getElementById("tipinput").value * 1);
+				var people = (document.getElementById("peopleinput").value * 1);
+				var cells = document.getElementsByTagName("td");
+				
+				
+				var tipAmount = (billAmount * (tip / 100));
+				var totalBill = (billAmount + tipAmount);
+				var totalPerPerson = (totalBill / people);
+				
+				
+				//convert values to dollars with 2 decimal places
+				cells[1].innerHTML = "$" + (tipAmount).toFixed(2);
+				cells[3].innerHTML = "$" + (totalBill).toFixed(2);
+				cells[5].innerHTML = "$" + (totalPerPerson).toFixed(2); 
+				}
+		</script>
+	</body>
+</html>
