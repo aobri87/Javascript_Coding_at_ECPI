@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--
+			CIS213 Unit 5, Final Exam Part 2
+			Author: Andrew O'Brien
+			Date:   27 Aug 2020
+		-->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<title>Final Exam PE</title>
+		<style> label {display: inline-block; width: 160px; text-align: left;}</style>
+	</head>
+	<body>
+		<header>
+			<h1>Andrew O'Brien, Trip Stats Calculator</h1>
+		</header>
+		<article>
+			<form>
+				<label for="tripinput">Trip Name:</label>
+				<input type="text" id="tripinput"name="trip" required="required" />
+				<br><br><label for="startinput">Starting Mileage:</label>
+				<input type="text" id="startinput"name="start" required="required" /> 
+				<br><br><label for="endinput">Ending Mileage:</label>
+				<input type="text" id="endinput"name="end" required="required" />
+				<br><br><label for="gasinput">Gallons of Gas Used:</label>
+				<input type="text" id="gasinput"name="gas" required="required" />
+			</form>
+			
+			<input type="button" id="tripBtn" value="Get Trip Summary" onclick="tripSummary()"/>					
+		</article>
+		<script>
+			function tripSummary()
+				{
+					
+				//gets values from inputs
+				var tripName = (document.getElementById("tripinput").value);
+				var startMileage = (document.getElementById("startinput").value * 1);
+				var endMileage = (document.getElementById("endinput").value * 1);
+				var gas = (document.getElementById("gasinput").value * 1);
+				
+				//math to figure out total mileage and MPG
+				var totalMiles = endMileage-startMileage;
+				var MPG = (totalMiles/gas).toFixed(1);
+				
+				localStorage.getItem('tripName', 'totalMiles', 'gas', 'MPG');
+				localStorage.setItem('tripName', 'totalMiles', 'gas', 'MPG');
+				
+				//Opens new window
+				var tableWin = window.open("", "TripSummaryDisplay", "toolbar=no, menubar=no, location=no,scrollbar=yes,resizable=no,width=500,height=400");
+				tableWin.document.open();
+				tableWin.document.write("<h1>Andrew O'Brien, Trip Summary</h1>");
+				tableWin.document.write("<p>Trip Name: " + tripName);
+				tableWin.document.write("<br><br>Total Miles Traveled: " + totalMiles);
+				tableWin.document.write("<br><br>Gallons of Gas Consumed: " + gas);
+				tableWin.document.write("<br><br>Fuel Economy (MPG) for Trip: " + MPG);
+				
+				}
+		</script>
+	</body>
+</html>

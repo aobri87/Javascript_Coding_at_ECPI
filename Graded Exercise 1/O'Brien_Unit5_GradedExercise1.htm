@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--
+			CIS Unit 5, Graded Exercise 1
+			Author: Andrew O'Brien
+			Date:   26 August 2020
+		-->
+		<meta charset="utf-8" />
+		<meta id="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+		<title> Unit 5, Graded Exercise 1</title>
+	</head>
+	<body>
+		<header>
+			<h1>Welcome to Andrew's Web Page!</h1>
+		</header>
+		<article>
+			<script>
+				"use strict"
+				window.addEventListener("onload", action())
+				
+				function action()
+					{
+					var d = new Date();
+					var weekday = new Array ("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+					var month = new Array ("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+					var time = new Date();
+					var t = time.getHours();
+					var n = d.toLocaleString([], {hour: '2-digit', minute: '2-digit'})
+					var lastvisit = (n)
+						+ (" on ")
+						+ (weekday[d.getDay()] + ", ")
+						+ (month[d.getMonth()] + " ")
+						+ (d.getDate() + ", ")
+						+ (d.getFullYear());
+						
+					if (t<12)	
+						{
+						document.write("Good morning! It is " + lastvisit);
+						}
+					else if (t>12 & t<17)	
+						{
+						document.write("Good afternoon! It is " + lastvisit);
+						}
+					else if (t>17 & t<24)	
+						{
+						document.write("Good evening! It is " + lastvisit);
+						}	
+					
+					}
+			</script>
+		</article>
+	</body>
+</html>
